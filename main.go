@@ -22,7 +22,7 @@ var streamCount *int = flag.Int("streams", 3, "Number of streams to create")
 func serve(port int) {
 	log.Printf("Serving messages on port %d", port)
 	go http.ListenAndServe(fmt.Sprintf("127.0.0.1:%d", port), &handler{
-		rand.New(rand.NewSource(time.Now().Unix())),
+		rand.New(rand.NewSource(time.Now().Unix() + int64(port))),
 		0,
 	})
 }
