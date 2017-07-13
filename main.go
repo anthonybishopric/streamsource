@@ -47,8 +47,7 @@ func (h *handler) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 	out, _ := json.Marshal(struct {
 		Timestamp int    `json:"timestamp"`
 		Message   string `json:"message"`
-	}{h.current, fmt.Sprintf("%s: %s %s -- %s", randomdata.IpV4Address(),
-		randomdata.Email(), randomdata.Noun(), randomdata.Timezone())})
+	}{h.current, randomdata.Noun()})
 
 	resp.Write(out)
 }
